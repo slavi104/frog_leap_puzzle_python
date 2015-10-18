@@ -2,6 +2,8 @@
 #!python3
 import sys, getopt
 
+CALCULATIONS = 0
+
 def generate_final_step(n):
     n = int(n)
     elements_number = (2*n)+1
@@ -42,6 +44,9 @@ def next_step(current_step = [], wrong_paths = []):
     current_step2 = current_step[:]
     current_step3 = current_step[:]
     current_step4 = current_step[:]
+
+    global CALCULATIONS
+    CALCULATIONS+=1
 
     if next_zero_pos1 >= 0 and current_step1[next_zero_pos1] == -1:
         current_step1[next_zero_pos1] = 0
@@ -121,4 +126,7 @@ if __name__ == "__main__":
                 node[index] = '_'
 
         print(' '.join(node))
+
+    print('You need to make', len(path), 'moves!')
+    print('Computer makes', CALCULATIONS, 'checks until gets correct solution!')
 
